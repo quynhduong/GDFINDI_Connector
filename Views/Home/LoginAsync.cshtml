@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MasterDetailsDemo.Models.project>
+
+@{
+    ViewBag.Title = "LoginAsync";
+}
+
+<h2>Project List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+
+                @using (Html.BeginForm("detail", "ProjectInfo", FormMethod.Post))
+                {
+                    @Html.CheckBox("Example")
+                    <input type="submit" value="Details" />
+                    <input id="ID" name="ID" type="hidden" value="@item.id" />
+
+
+                    <input id="name" name="name" type="hidden" value="@item.name" />
+
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+<input type="submit" value="Production Process" onclick="location.href='@Url.Action("Station", "Stations")'" />

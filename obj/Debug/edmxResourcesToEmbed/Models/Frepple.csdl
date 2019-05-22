@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FreppleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerName" />
+    </Key>
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Priority" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PriorityCate" Relationship="Self.FK_Customer_Priority" FromRole="Customer" ToRole="PriorityCate" />
+    <NavigationProperty Name="ProductionOrders" Relationship="Self.FK_ProductionOrder_Customer" FromRole="Customer" ToRole="ProductionOrder" />
+  </EntityType>
+  <EntityType Name="PriorityCate">
+    <Key>
+      <PropertyRef Name="Priority" />
+    </Key>
+    <Property Name="Priority" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Priority" FromRole="PriorityCate" ToRole="Customer" />
+    <NavigationProperty Name="ProductionOrders" Relationship="Self.FK_ProductionOrder_Priority" FromRole="PriorityCate" ToRole="ProductionOrder" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="On_hand" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TypeCate" Relationship="Self.FK_Product_Type" FromRole="Product" ToRole="TypeCate" />
+    <NavigationProperty Name="ProductionOrders" Relationship="Self.FK_ProductionOrder_Product" FromRole="Product" ToRole="ProductionOrder" />
+  </EntityType>
+  <EntityType Name="ProductionOrder">
+    <Key>
+      <PropertyRef Name="PO_Id" />
+    </Key>
+    <Property Name="PO_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Release_date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Due_date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Lotsize" Type="Int32" Nullable="false" />
+    <Property Name="Delivery_date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Priority" Type="Int32" Nullable="false" />
+    <Property Name="Cycle_time" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_ProductionOrder_Customer" FromRole="ProductionOrder" ToRole="Customer" />
+    <NavigationProperty Name="PriorityCate" Relationship="Self.FK_ProductionOrder_Priority" FromRole="ProductionOrder" ToRole="PriorityCate" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ProductionOrder_Product" FromRole="ProductionOrder" ToRole="Product" />
+    <NavigationProperty Name="TypeCate" Relationship="Self.FK_ProductionOrder_Type" FromRole="ProductionOrder" ToRole="TypeCate" />
+  </EntityType>
+  <EntityType Name="TypeCate">
+    <Key>
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Type" FromRole="TypeCate" ToRole="Product" />
+    <NavigationProperty Name="ProductionOrders" Relationship="Self.FK_ProductionOrder_Type" FromRole="TypeCate" ToRole="ProductionOrder" />
+  </EntityType>
+  <Association Name="FK_Customer_Priority">
+    <End Role="PriorityCate" Type="Self.PriorityCate" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriorityCate">
+        <PropertyRef Name="Priority" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Priority" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductionOrder_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="ProductionOrder" Type="Self.ProductionOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerName" />
+      </Principal>
+      <Dependent Role="ProductionOrder">
+        <PropertyRef Name="CustomerName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductionOrder_Priority">
+    <End Role="PriorityCate" Type="Self.PriorityCate" Multiplicity="1" />
+    <End Role="ProductionOrder" Type="Self.ProductionOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriorityCate">
+        <PropertyRef Name="Priority" />
+      </Principal>
+      <Dependent Role="ProductionOrder">
+        <PropertyRef Name="Priority" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Type">
+    <End Role="TypeCate" Type="Self.TypeCate" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCate">
+        <PropertyRef Name="Type" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductionOrder_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductionOrder" Type="Self.ProductionOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="ProductionOrder">
+        <PropertyRef Name="Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductionOrder_Type">
+    <End Role="TypeCate" Type="Self.TypeCate" Multiplicity="1" />
+    <End Role="ProductionOrder" Type="Self.ProductionOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCate">
+        <PropertyRef Name="Type" />
+      </Principal>
+      <Dependent Role="ProductionOrder">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FreppleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="PriorityCates" EntityType="Self.PriorityCate" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductionOrders" EntityType="Self.ProductionOrder" />
+    <EntitySet Name="TypeCates" EntityType="Self.TypeCate" />
+    <AssociationSet Name="FK_Customer_Priority" Association="Self.FK_Customer_Priority">
+      <End Role="PriorityCate" EntitySet="PriorityCates" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductionOrder_Customer" Association="Self.FK_ProductionOrder_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="ProductionOrder" EntitySet="ProductionOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductionOrder_Priority" Association="Self.FK_ProductionOrder_Priority">
+      <End Role="PriorityCate" EntitySet="PriorityCates" />
+      <End Role="ProductionOrder" EntitySet="ProductionOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Type" Association="Self.FK_Product_Type">
+      <End Role="TypeCate" EntitySet="TypeCates" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductionOrder_Product" Association="Self.FK_ProductionOrder_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductionOrder" EntitySet="ProductionOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductionOrder_Type" Association="Self.FK_ProductionOrder_Type">
+      <End Role="TypeCate" EntitySet="TypeCates" />
+      <End Role="ProductionOrder" EntitySet="ProductionOrders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

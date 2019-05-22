@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MasterDetailsDemo.Models.StationActivity_View>
+
+@{
+    ViewBag.Title = "ProjectInfo";
+}
+
+<h2>ProjectInfo</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Headcount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Worktime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dispersion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowToolingActivities)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkerBehavior)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Behavior)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activation)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Headcount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Worktime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dispersion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowToolingActivities)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkerBehavior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Behavior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activation)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
+<input type="submit" value="Station Details" onclick="location.href='@Url.Action("Station", "Stations")'" />
