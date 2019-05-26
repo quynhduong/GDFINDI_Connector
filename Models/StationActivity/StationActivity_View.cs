@@ -14,7 +14,7 @@ namespace MasterDetailsDemo.Models
        
         public Station_View Station_View { get; set; }
        
-        public Product_View Product_View { get; set; }
+       // public Product_View Product_View { get; set; }
         
        // public Process Process { get; set; }
         

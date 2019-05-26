@@ -159,15 +159,44 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssetsController.cs" />
+    <Compile Include="Controllers\Process_PPController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\InOutController.cs" />
+    <Compile Include="Controllers\PartController.cs" />
     <Compile Include="Controllers\ProcessController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductionProcessController.cs" />
+    <Compile Include="Controllers\Product_PPController.cs" />
+    <Compile Include="Controllers\ToolingsController.cs" />
     <Compile Include="Controllers\ProjectInfoController.cs" />
+    <Compile Include="Controllers\RenderingConditionController.cs" />
+    <Compile Include="..\..\..\..\Desktop\RenderingController.cs">
+      <Link>Controllers\RenderingController.cs</Link>
+    </Compile>
     <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Controllers\ToolingActivityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Assets\Assets_View.cs" />
+    <Compile Include="Models\Rendering\DynamicItemLog_View.cs" />
+    <Compile Include="Models\Rendering\Goal_View.cs" />
+    <Compile Include="Models\Rendering\Inventory_View.cs" />
+    <Compile Include="Models\Rendering\Order_View.cs" />
+    <Compile Include="Models\Rendering\PartLog_View.cs" />
+    <Compile Include="Models\Rendering\ProductionSchedule_View.cs" />
+    <Compile Include="Models\Rendering\RenderingCondition_View.cs" />
+    <Compile Include="Models\Rendering\RenderingParameters_View.cs" />
+    <Compile Include="Models\Rendering\RenderingResult_View.cs" />
+    <Compile Include="..\..\..\..\Desktop\RunningStatus_View.cs">
+      <Link>Models\Rendering\RunningStatus_View.cs</Link>
+    </Compile>
+    <Compile Include="Models\Rendering\StaticItemLog_View.cs" />
+    <Compile Include="Models\Rendering\StationStatus_View.cs" />
+    <Compile Include="Models\Rendering\StatusLog_View.cs" />
+    <Compile Include="Models\Rendering\SummaryResult_View.cs" />
+    <Compile Include="Models\Rendering\Tooling_View.cs" />
     <Compile Include="Models\StationActivity\Calendar_View.cs" />
     <Compile Include="Models\FindiClient.cs" />
     <Compile Include="Models\Goal.cs" />
@@ -177,17 +206,25 @@
     <Compile Include="Models\Load.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\StationActivity\Material_View.cs" />
+    <Compile Include="Models\PartLists\Part_View.cs" />
     <Compile Include="Models\StationActivity\Process_View.cs" />
     <Compile Include="Models\Production.cs" />
     <Compile Include="Models\StationActivity\ProductionProcess_View.cs" />
     <Compile Include="Models\project.cs" />
     <Compile Include="Models\ProjectParameters.cs" />
+    <Compile Include="Models\StationActivity\Product_View.cs" />
     <Compile Include="Models\StationActivity\Station_View.cs" />
     <Compile Include="Models\StationActivity\StationActivity_View.cs" />
     <Compile Include="Models\StationActivity\Time_View.cs" />
     <Compile Include="Models\StationActivity\ToolingActivity_View.cs" />
     <Compile Include="Models\StationActivity\WorkingHourGroup.cs" />
     <Compile Include="Models\StationActivity\Worktime_View.cs" />
+    <Compile Include="Models\Summary\ProcessInfo_View.cs" />
+    <Compile Include="Models\Summary\ProductInfo_View.cs" />
+    <Compile Include="Models\Summary\StationInfo_View.cs" />
+    <Compile Include="Models\Summary\StatusInfo_View.cs" />
+    <Compile Include="Models\Summary\ToolingInfo_View.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,10 +271,25 @@
     <Content Include="Views\Stations\Station.cshtml" />
     <Content Include="Views\ToolingActivity\ToolingActivity.cshtml" />
     <Content Include="Views\Process\Process.cshtml" />
+    <Content Include="Views\Product\Product.cshtml" />
+    <Content Include="Views\InOut\Input.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\InOut\Output.cshtml" />
+    <Content Include="Views\RenderingCondition\RenderingCondition.cshtml" />
+    <Content Include="Views\Rendering\ProcessResult.cshtml" />
+    <Content Include="Views\Toolings\Tooling.cshtml" />
+    <Content Include="Views\Part\Part.cshtml" />
+    <Content Include="Views\ProductionProcess\ProductionProcess.cshtml" />
+    <Content Include="Views\Process_PP\Process.cshtml" />
+    <Content Include="Views\Product_PP\Product.cshtml" />
+    <Content Include="Views\Assets\AssetsTools.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Production_Process\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\My\" />
+    <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

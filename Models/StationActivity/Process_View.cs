@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MasterDetailsDemo.Models.StationActivity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,7 +29,7 @@ namespace MasterDetailsDemo.Models
 
         public string Id { get; }
         
-        public Product_View Product { get; set; }
+        public Product_View Product_View { get; set; }
       
         public ProductionProcess_View Parent { get; }
         public bool? Disabled { get; set; }

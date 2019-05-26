@@ -13,10 +13,10 @@
     <style>
         #login-div {
             position: absolute;
-            left: 40%;
+            left: 30%;
             top: 40%;
             border: 1px solid #ccc;
-            padding: 10px 10px;
+            padding: 25px 25px;
         }
 
         .field-validation-error {
@@ -29,15 +29,13 @@
         @using (Html.BeginForm("LoginAsync", "Home", FormMethod.Post))
         {
             <table>
+               
                 <tr>
-                    <td></td>
-                    <td style="text-decoration:underline">Gd.findi</td>
-                </tr>
-                <tr>
-                    <td>
+                    <td style="text-align:left">
                         @Html.LabelFor(model => model.user)
                     </td>
-                    <td>
+               
+                    <td style="box-sizing:padding-box">
                         @Html.EditorFor(model => model.user)
                     </td>
                 </tr>
@@ -46,8 +44,12 @@
                     <td>@Html.ValidationMessageFor(model => model.user)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(model => model.password)</td>
-                    <td>@Html.EditorFor(model => model.password)</td>
+                    <td style="text-align:left">
+                    @Html.LabelFor(model => model.password)
+                    </td>
+                    <td style="text-align: right end">
+                    @Html.EditorFor(model => model.password)
+                    </td>
                 </tr>
                 <tr>
                     <td></td>

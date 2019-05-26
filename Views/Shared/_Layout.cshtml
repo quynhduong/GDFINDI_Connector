@@ -86,18 +86,20 @@
             </div>
 
             <div class="mynav_navbar">
-                <a @Html.ActionLink("Contact", "Contact", "Home")>Contact</a>
+                <a @Html.ActionLink("Production Process", "ProductionProcess", "ProductionProcess")>Contact</a>
                 <a href="#news">News</a>
                 <div class="mynav_dropdown">
                     <button class="mynav_dropbtn">
-                        Menu
+                        Production Process
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="mynav_dropdown-content">
-                        <a @Html.ActionLink("Home", "LoginAsync", "Home") > </a>
-                        <a @Html.ActionLink("Project Details", "ProjectInfo", "ProjectInfo") > </a>
+                        @Html.ActionLink("Process", "Process", "Process_PP")
+                        @Html.ActionLink("Product", "Product", "Product_PP")
+                        @Html.ActionLink("Tooling", "AssetsTools", "Assets")
+
                     </div>
-                   
+
                 </div>
 
                 <div class="mynav_dropdown">
@@ -109,8 +111,30 @@
                         @Html.ActionLink("Station", "Station", "Stations")
                         @Html.ActionLink("Tooling Activity", "ToolingActivity", "ToolingActivity")
                         @Html.ActionLink("Process", "Process", "Process")
+                        @Html.ActionLink("Product", "Product", "Product")
+                        @Html.ActionLink("Input", "Input", "InOut")
+                        @Html.ActionLink("Output", "Output", "InOut")
+                        @Html.ActionLink("Materials", "Part", "Part")
                     </div>
                 </div>
+
+                <div class="mynav_dropdown">
+                    <button class="mynav_dropbtn">
+                        Rendering
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="mynav_dropdown-content">
+                        @Html.ActionLink("Process Info", "ProcessResult", "Rendering")
+                        @Html.ActionLink("Tooling Info", "Tooling", "Toolings")
+                        @Html.ActionLink("Rendering Parameters", "RenderingCondition", "RenderingCondition")
+
+                    </div>
+
+                </div>
+
+                
+
+                
 
             </div>
         </div>

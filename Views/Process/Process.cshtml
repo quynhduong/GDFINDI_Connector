@@ -12,8 +12,9 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Y)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.OutputProcess)
         </th>
@@ -36,11 +37,12 @@
             @Html.DisplayNameFor(model => model.X)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Desc)
+            @Html.DisplayNameFor(model => model.Y)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Desc)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Disabled)
         </th>
@@ -50,8 +52,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Y)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.OutputProcess)
         </td>
@@ -74,19 +77,16 @@
             @Html.DisplayFor(modelItem => item.X)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Desc)
+            @Html.DisplayFor(modelItem => item.Y)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Desc)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Disabled)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+     
     </tr>
 }
 

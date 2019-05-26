@@ -12,6 +12,7 @@ namespace MasterDetailsDemo.Controllers
 {
     public class ProjectInfoController : Controller
     {
+        Project project = new Project("a");
         // GET: ProjectInfo
         public ActionResult Index()
         {
@@ -44,7 +45,6 @@ namespace MasterDetailsDemo.Controllers
 
             List<StationActivity_View> stationActivity_Views = new List<StationActivity_View>();
            
-            
            
 
                     foreach(var p in stationActivities)

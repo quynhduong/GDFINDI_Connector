@@ -1,0 +1,50 @@
+﻿@model MasterDetailsDemo.Models.Rendering.RenderingParameters_View
+
+@{
+    ViewBag.Title = "RenderingCondition";
+}
+
+<h2>RenderingCondition</h2>
+
+<div>
+    <h4>Rendering Parameters</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Period)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Period)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sampling)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sampling)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInterval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataInterval)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

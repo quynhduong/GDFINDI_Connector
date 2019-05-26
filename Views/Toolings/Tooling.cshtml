@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MasterDetailsDemo.Models.Summary.ToolingInfo_View>
+
+@{
+    ViewBag.Title = "Tooling";
+}
+
+<h2>Tooling</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ZeroLifeCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsedCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnusedCount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZeroLifeCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsedCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnusedCount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,6 +1,7 @@
 ﻿using GDfindi;
 using GDfindi.Models;
 using MasterDetailsDemo.Models;
+using MasterDetailsDemo.Models.StationActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,12 @@ namespace MasterDetailsDemo.Controllers
                     process_View.Worktime = process.Worktime;
                     process_View.X = process.X;
                     process_View.Y = process.Y;
+
+                    /*foreach(var ele in processes)
+                    {
+                        Product_View product = new Product_View();
+                        product.Name = ele.Product.Name;
+                    }*/
 
                     process_Views.Add(process_View);
 
